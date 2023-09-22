@@ -3,6 +3,7 @@ export let promoObject
 let promos
 
 const promoBtn = document.querySelector('#promo-btn')
+const totalPrice = document.querySelector('#total-price2')
 const promoForm = document.querySelector('#promo-form')
 
 
@@ -21,11 +22,13 @@ promoBtn.addEventListener('click', () => {
 	if (promoBtn.innerHTML === '+промокод') {
 		promoBtn.innerHTML = '-промокод'
 		promoForm.classList.toggle('none')
+		totalPrice.classList.toggle('none')
 		calcCartPriceAndDelivery()
 	}
 	else if (promoBtn.innerHTML === '-промокод') {
 		promoBtn.innerHTML = '+промокод'
 		promoForm.classList.toggle('none')
+		totalPrice.classList.toggle('none')
 		calcCartPriceAndDelivery()
 	}
 })
@@ -40,10 +43,12 @@ let findPromo = (promo) => {
 	if (promoObject) {
 		promoSum = promoObject.rubles;
 		promoForm.style.border = '2px solid green';
+		totalPrice.innerText = promoObject.promoText
 		calcCartPriceAndDelivery()
 	} else {
 		promoSum = 0
 		promoForm.style.border = '2px solid red';
+		totalPrice.innerText = 'Введите ваш промо-код'
 		calcCartPriceAndDelivery()
 	}
 }

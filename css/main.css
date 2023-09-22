@@ -350,3 +350,12 @@ img {
   border: 2px solid #eb5a1e;
   border-radius: 10px;
 }
+
+.total-promo-text{
+  text-align: end;
+}
+.cart-item_desc {
+  display: flex;
+  justify-content: space-between;
+  color: #0ea107;
+}
