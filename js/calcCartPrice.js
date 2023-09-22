@@ -74,7 +74,10 @@ export function calcCartPriceAndDelivery() {
 
 	// Отображаем цену на странице
 
-	totalPriceEl.innerText = priceTotal + 250 + promoSum
+	//cтоимость доставки
+	const deliveryCostSum = 250
+	
+	totalPriceEl.innerText = priceTotal + deliveryCostSum + promoSum
 
 	// Скрываем / Показываем блок со стоимостью доставки
 	if (priceTotal > 0) {
@@ -90,8 +93,7 @@ export function calcCartPriceAndDelivery() {
 		totalPriceEl.innerText = priceTotal + promoSum
 	} else {
 		deliveryCost.classList.remove('free');
-		deliveryCost.innerText = '250';
-		totalPriceEl.innerText = priceTotal + 250 + promoSum
-
+		deliveryCost.innerText = deliveryCostSum;
+		totalPriceEl.innerText = priceTotal + deliveryCostSum + promoSum
 	}
 }
