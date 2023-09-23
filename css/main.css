@@ -223,6 +223,10 @@ img {
   color: #0ea107;
 }
 
+.items-in-box {
+  font-weight: 800;
+}
+
 .total-price {
   color: #eb5a1e;
 }
@@ -236,7 +240,7 @@ img {
 }
 
 .description {
-  font-size: 20px;
+  font-size: 1em;
 }
 .cart-icon {
   position: fixed;
@@ -259,7 +263,7 @@ img {
 }
 
 .card-body {
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
 }
 .card-body p {
   margin-bottom: 0;
@@ -351,7 +355,7 @@ img {
   border-radius: 10px;
 }
 
-.total-promo-text{
+.total-promo-text {
   text-align: end;
 }
 .cart-item_desc {

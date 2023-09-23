@@ -4,7 +4,6 @@ import { promoSum, promoObject } from './calcCartPrice.js'
 let TOKEN
 let CHAT_ID
 let url_api = `https://api.telegram.org/bot${TOKEN}/sendMessage`
-tokens()
 
 async function tokens() {
     // Получаем данные из products.json
@@ -16,7 +15,7 @@ async function tokens() {
     url_api = `https://api.telegram.org/bot${TOKEN}/sendMessage`
 }
 
-
+tokens()
 
 // обозначил инпут
 const input = document.querySelector('#inputPhone');

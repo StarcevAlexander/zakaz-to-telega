@@ -26,7 +26,7 @@
 							<div class="card-body text-center">
 							<h4 class="item-title">${item.title}</h4>
 							<p><small class="text-muted description">${item.description}</small></p>
-								<p><small data-items-in-box class="text-muted">${item.itemsInBox}</small></p>
+								<p><small data-items-in-box class="text-muted items-in-box">${item.itemsInBox}</small></p>
 								<div class="details-wrapper">
 									<!-- Счетчик -->
 									<div class="items counter-wrapper">
@@ -37,7 +37,7 @@
 									<!-- // Счетчик -->
 									<div class="price">
 										<div class="price__weight">${item.weight}г.</div>
-										<div class="price__currency">${item.price} ₽</div>
+										<div class="price__currency">${item.price}₽</div>
 									</div>
 								</div>
 								<button data-cart type="button" class="btn btn-block btn-outline-warning">
