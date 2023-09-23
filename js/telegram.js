@@ -1,10 +1,21 @@
-import {promoSum} from './calcCartPrice.js'
-import {promoObject} from './calcCartPrice.js'
-//данные моего телеграм бота
+import { promoSum, promoObject } from './calcCartPrice.js'
 
-const TOKEN = "5843110084:AAGr3oTwabU0mtLeZLw4BteR5M6Sm437488"
-const CHAT_ID = "-4080191516"
-const url_api = `https://api.telegram.org/bot${TOKEN}/sendMessage`
+//данные моего телеграм бота
+let TOKEN
+let CHAT_ID
+let url_api = `https://api.telegram.org/bot${TOKEN}/sendMessage`
+tokens()
+
+async function tokens() {
+    // Получаем данные из products.json
+    const response = await fetch('./js/data-tg.json');
+    // Парсим данные из JSON формата в JS
+    let dataToken = await response.json();
+    TOKEN = dataToken[0].TOKEN
+    CHAT_ID = dataToken[0].CHAT_ID
+    url_api = `https://api.telegram.org/bot${TOKEN}/sendMessage`
+}
+
 
 
 // обозначил инпут
@@ -53,7 +64,7 @@ function myFunc() {
 
     const totalPrice = document.querySelector('.total-price').innerHTML;
 
-    zakzText = (`Состав:\n${res}\nДоставка: ${dostavka} рублей.\nИспользован промо-код на сумму: ${-promoSum} рублей\nпо поводу:\n${promoObject.description}\n\nСумма всего заказа: ${totalPrice} рублей`)
+    zakzText = (`Состав:\n${res}\nДоставка: ${dostavka} рублей.\nИспользован промо-код на сумму: ${promoSum ? -promoSum + ' рублей' : 'отсутствует'}\nПо поводу:${promoObject ? promoObject.description : ' отсутствует'} \n\nСумма всего заказа: ${totalPrice} рублей`)
 }
 
 let howMuchClick = 0
@@ -85,11 +96,11 @@ document.getElementById('tg').addEventListener('submit', function (e) {
         howMuchClick++
         if (howMuchClick === 4) {
             location.reload()
-           
+
         }
         e.preventDefault();
         myFunc()
-        let message = `${formattedDate}\nпоступил заказ:\n\n${zakzText}\n\nНомер клиента: ${this.text.value}\nАдрес клиента: ${this.adress.value}`
+        let message = `${formattedDate} \nпоступил заказ: \n\n${zakzText} \n\nНомер клиента: ${this.text.value} \nАдрес клиента: ${this.adress.value} `
         axios.post(url_api, {
             chat_id: CHAT_ID,
             parse_mode: 'html',

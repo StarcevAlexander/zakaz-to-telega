@@ -14,7 +14,6 @@ async function getPromocode() {
 	const response = await fetch('./js/promo-code.json');
 	// Парсим данные из JSON формата в JS
 	promos = await response.json();
-	// Запускаем ф-ю рендера (отображения промов)
 }
 
 
